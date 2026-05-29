@@ -78,11 +78,11 @@
 
   function cx(n){return PAD+n*(MW+CG)}
   function calcPos(){
-    [1,2,3,4,5,6,7,8].forEach((id,i)=>{pos[id]={x:cx(0),y:PAD+28+i*(MH+RG)}});
+    [1,2,3,4,5,6,7,8].forEach((id,i)=>{pos[id]={x:cx(0),y:PAD+42+i*(MH+RG)}});
     [[13,1,2],[14,3,4],[15,5,6],[16,7,8]].forEach(([id,a,b])=>{pos[id]={x:cx(1),y:(pos[a].y+pos[b].y)/2}});
     pos[23]={x:cx(2),y:(pos[13].y+pos[14].y)/2};pos[24]={x:cx(2),y:(pos[15].y+pos[16].y)/2};
     pos[28]={x:cx(3),y:(pos[23].y+pos[24].y)/2};
-    const lbY=pos[8].y+MH+SG;
+    const lbY=pos[8].y+MH+SG+14;
     [9,10,11,12].forEach((id,i)=>{pos[id]={x:cx(0),y:lbY+i*(MH+RG)}});
     [20,19,18,17].forEach((id,i)=>{pos[id]={x:cx(1),y:lbY+i*(MH+RG)}});
     pos[22]={x:cx(2),y:(pos[20].y+pos[19].y)/2};pos[21]={x:cx(2),y:(pos[18].y+pos[17].y)/2};
@@ -154,13 +154,13 @@
   }
 
   function addLabels(ct){
-    [{t:'\u2693 Fleet Command',x:PAD,y:PAD+3,c:'section-label wb'},
-     {t:'\u2693 Reserve Fleet',x:PAD,y:pos[9].y-22,c:'section-label lb'},
-     {t:'Skirmish',x:cx(0),y:PAD+14,c:'round-label'},
-     {t:'Engage',x:cx(1),y:PAD+14,c:'round-label'},
-     {t:'Assault',x:cx(2),y:PAD+14,c:'round-label'},
-     {t:'Flagship',x:cx(3),y:PAD+14,c:'round-label'},
-     {t:'Final Battle',x:cx(5),y:PAD+14,c:'round-label gf-round'},
+    [{t:'\u2693 Fleet Command',x:PAD,y:PAD-2,c:'section-label wb'},
+     {t:'\u2693 Reserve Fleet',x:PAD,y:pos[9].y-28,c:'section-label lb'},
+     {t:'Skirmish',x:cx(0),y:PAD+18,c:'round-label'},
+     {t:'Engage',x:cx(1),y:PAD+18,c:'round-label'},
+     {t:'Assault',x:cx(2),y:PAD+18,c:'round-label'},
+     {t:'Flagship',x:cx(3),y:PAD+18,c:'round-label'},
+     {t:'Final Battle',x:cx(5),y:PAD+18,c:'round-label gf-round'},
     ].forEach(l=>{
       const d=document.createElement('div');d.className=l.c;d.textContent=l.t;
       d.style.cssText='left:'+l.x+'px;top:'+l.y+'px;';ct.appendChild(d);
