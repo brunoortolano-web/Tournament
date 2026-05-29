@@ -1,12 +1,12 @@
 :root{
   --bg:#060e1a;--bg2:#0b1929;
-  --card:rgba(15,40,80,0.22);
-  --border:rgba(80,140,200,0.12);--border-h:rgba(100,170,240,0.25);
-  --text:#c8d6e5;--text2:#7a95b0;--muted:#3d5a7a;
-  --wb:#d4a843;--wb-d:rgba(212,168,67,0.10);--wb-b:rgba(212,168,67,0.20);
-  --lb:#7a95b0;--lb-d:rgba(122,149,176,0.08);--lb-b:rgba(122,149,176,0.18);
-  --gf:#e63946;--gf-d:rgba(230,57,70,0.10);--gf-b:rgba(230,57,70,0.22);
-  --win:#ffd700;--win-g:rgba(255,215,0,0.18);
+  --card:rgba(15,40,80,0.28);
+  --border:rgba(80,140,200,0.15);--border-h:rgba(100,170,240,0.30);
+  --text:#e2eaf3;--text2:#9ab4cc;--muted:#5a7ea0;
+  --wb:#e0b44e;--wb-d:rgba(212,168,67,0.12);--wb-b:rgba(212,168,67,0.24);
+  --lb:#92adc4;--lb-d:rgba(122,149,176,0.10);--lb-b:rgba(122,149,176,0.22);
+  --gf:#e63946;--gf-d:rgba(230,57,70,0.12);--gf-b:rgba(230,57,70,0.26);
+  --win:#ffd700;--win-g:rgba(255,215,0,0.20);
   --danger:#e63946;--r:8px;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -125,11 +125,11 @@ main{height:calc(100vh - 54px);overflow:hidden}
 
 .player-input{
   background:transparent;border:none;outline:none;
-  color:var(--text);font-family:inherit;font-size:.78rem;font-weight:500;
+  color:#e8f0fa;font-family:inherit;font-size:.8rem;font-weight:500;
   width:100%;min-width:0;padding:2px 0;-webkit-user-select:text;user-select:text;
 }
-.player-input::placeholder{color:var(--muted);font-weight:400;font-style:italic}
-.player-input:focus{color:#e8f0ff}
+.player-input::placeholder{color:#506a88;font-weight:400;font-style:italic}
+.player-input:focus{color:#f0f6ff}
 
 .win-btn{
   background:none;border:none;cursor:pointer;font-size:.9rem;color:var(--muted);
@@ -141,10 +141,10 @@ main{height:calc(100vh - 54px);overflow:hidden}
 .match.ready .player-slot.winner .win-btn{opacity:1;color:var(--win)}
 
 .player-name{
-  font-size:.78rem;font-weight:500;color:var(--text);
+  font-size:.8rem;font-weight:500;color:#e8f0fa;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0;
 }
-.player-name.source-hint{color:var(--muted);font-weight:400;font-style:italic;font-size:.65rem}
+.player-name.source-hint{color:#506a88;font-weight:400;font-style:italic;font-size:.68rem}
 
 .match:not(.r1) .player-slot:not(.winner):not(.loser)::after{
   content:'▸';position:absolute;right:8px;font-size:.6rem;color:var(--win);opacity:0;transition:opacity .12s;
@@ -165,10 +165,10 @@ main{height:calc(100vh - 54px);overflow:hidden}
 
 /* === SECTION & ROUND LABELS === */
 .section-label,.round-label{position:absolute;z-index:5;user-select:none;pointer-events:none}
-.section-label{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:2.5px}
-.section-label.wb{color:rgba(212,168,67,.5)}.section-label.lb{color:rgba(122,149,176,.4)}
-.round-label{font-size:.55rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
-.round-label.gf-round{color:rgba(230,57,70,.55)}
+.section-label{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:2.5px}
+.section-label.wb{color:rgba(224,180,78,.7)}.section-label.lb{color:rgba(146,173,196,.6)}
+.round-label{font-size:.56rem;font-weight:600;color:#6890b0;text-transform:uppercase;letter-spacing:1px;white-space:nowrap}
+.round-label.gf-round{color:rgba(230,57,70,.7)}
 
 /* === STANDINGS === */
 .standings-panel{
