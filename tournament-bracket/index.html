@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#060e1a">
+  <title>3rd Panermilio Battleship Tournament</title>
+  <meta name="description" content="Interactive 16-player double elimination battleship tournament bracket">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <div class="header-left">
+        <h1 id="tournament-title" contenteditable="true" spellcheck="false">⚓ 3rd Panermilio Battleship Tournament</h1>
+      </div>
+      <div class="header-right">
+        <span class="mode-badge admin" id="badge-admin">⚙ Admin</span>
+        <span class="mode-badge viewer" id="badge-viewer">📡 Viewing</span>
+        <span id="sync-dot" class="sync-dot" title="Sync status"></span>
+        <button id="share-btn" class="btn btn-share" title="Share bracket with viewers">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+          Share
+        </button>
+        <button id="reset-btn" class="btn btn-danger admin-only" title="Reset tournament">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          Reset
+        </button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="bracket-scroll" id="bracket-scroll">
+      <div class="bracket-container" id="bracket-container">
+        <svg class="connectors" id="connectors"></svg>
+      </div>
+    </div>
+  </main>
+  <div id="standings" class="standings-panel"></div>
+  <div id="champion-overlay" class="champion-overlay">
+    <div class="champion-card">
+      <div class="champion-trophy">⚓</div>
+      <div class="champion-label">ADMIRAL</div>
+      <div class="champion-name" id="champion-name"></div>
+      <button class="champion-close" id="champion-close">Dismissed</button>
+    </div>
+  </div>
+  <div id="share-modal" class="share-modal">
+    <div class="share-modal-card">
+      <div class="share-modal-title">📡 Share this link with viewers</div>
+      <p class="share-modal-hint">Select all → Copy → Send via WhatsApp/chat</p>
+      <textarea id="share-url" class="share-url" readonly rows="3"></textarea>
+      <div class="share-modal-btns">
+        <button id="share-copy-btn" class="btn btn-share" onclick="document.getElementById('share-url').select();try{document.execCommand('copy')}catch(e){};this.textContent='Copied!'">Copy</button>
+        <button class="btn btn-danger" onclick="document.getElementById('share-modal').classList.remove('visible')">Close</button>
+      </div>
+    </div>
+  </div>
+  <div id="toast" class="toast"></div>
+  <script src="bracket.js"></script>
+</body>
+</html>
