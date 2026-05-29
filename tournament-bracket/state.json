@@ -1,1 +1,153 @@
-{"m":{"1":{"p1":"dgffgbfdg","p2":"fdgb","w":2},"2":{"p1":"sfgb","p2":"sdfgb","w":2},"3":{"p1":"sfdgb","p2":"sdfb","w":2},"4":{"p1":"dfgb","p2":"sdfb","w":2},"5":{"p1":"sdfbg","p2":"sdfgb","w":1},"6":{"p1":"sdgfb","p2":"sdfg","w":1},"7":{"p1":"sdfgb","p2":"sdfb","w":2},"8":{"p1":"sdfb","p2":"sdfb","w":1},"9":{"p1":"dgffgbfdg","p2":"sfgb","w":2},"10":{"p1":"sfdgb","p2":"dfgb","w":2},"11":{"p1":"sdfgb","p2":"sdfg","w":null},"12":{"p1":"sdfgb","p2":"sdfb","w":null},"13":{"p1":"fdgb","p2":"sdfgb","w":null},"14":{"p1":"sdfb","p2":"sdfb","w":null},"15":{"p1":"sdfbg","p2":"sdgfb","w":null},"16":{"p1":"sdfb","p2":"sdfb","w":null},"17":{"p1":"","p2":"","w":null},"18":{"p1":"","p2":"","w":null},"19":{"p1":"dfgb","p2":"","w":null},"20":{"p1":"sfgb","p2":"","w":null},"21":{"p1":"","p2":"","w":null},"22":{"p1":"","p2":"","w":null},"23":{"p1":"","p2":"","w":null},"24":{"p1":"","p2":"","w":null},"25":{"p1":"","p2":"","w":null},"26":{"p1":"","p2":"","w":null},"27":{"p1":"","p2":"","w":null},"28":{"p1":"","p2":"","w":null},"30":{"p1":"","p2":"","w":null}},"reset":false,"shownChamp":null,"title":"⚓ 3rd Panermilio Battleship Tournament"}
+{
+    "m": {
+        "1": {
+            "p1": "Anna Gkika",
+            "p2": "George Vergos",
+            "w": null
+        },
+        "2": {
+            "p1": "Kostantinos Mar",
+            "p2": "Anatoli Ginosati",
+            "w": null
+        },
+        "3": {
+            "p1": " Yiorgos Michas",
+            "p2": "Sofia Varth",
+            "w": null
+        },
+        "4": {
+            "p1": "Bruno Ortolano",
+            "p2": "Basilis Skama",
+            "w": null
+        },
+        "5": {
+            "p1": "Ermis Ginosatis",
+            "p2": "Kostas Abov",
+            "w": null
+        },
+        "6": {
+            "p1": "Piereta",
+            "p2": "Filip Ginosatis",
+            "w": null
+        },
+        "7": {
+            "p1": "Anna Houliara",
+            "p2": "Eirini Ts",
+            "w": null
+        },
+        "8": {
+            "p1": "Giannis Mano",
+            "p2": "Bye",
+            "w": null
+        },
+        "9": {
+            "p1": "",
+            "p2": "",
+            "w": null
+        },
+        "10": {
+            "p1": "",
+            "p2": "",
+            "w": null
+        },
+        "11": {
+            "p1": "",
+            "p2": "",
+            "w": null
+        },
+        "12": {
+            "p1": "",
+            "p2": "",
+            "w": null
+        },
+        "13": {
+            "p1": "",
+            "p2": "",
+            "w": null
+        },
+        "14": {
+            "p1": "",
+            "p2": "",
+            "w": null
+        },
+        "15": {
+            "p1": "",
+            "p2": "",
+            "w": null
+        },
+        "16": {
+            "p1": "",
+            "p2": "",
+            "w": null
+        },
+        "17": {
+            "p1": "",
+            "p2": "",
+            "w": null
+        },
+        "18": {
+            "p1": "",
+            "p2": "",
+            "w": null
+        },
+        "19": {
+            "p1": "",
+            "p2": "",
+            "w": null
+        },
+        "20": {
+            "p1": "",
+            "p2": "",
+            "w": null
+        },
+        "21": {
+            "p1": "",
+            "p2": "",
+            "w": null
+        },
+        "22": {
+            "p1": "",
+            "p2": "",
+            "w": null
+        },
+        "23": {
+            "p1": "",
+            "p2": "",
+            "w": null
+        },
+        "24": {
+            "p1": "",
+            "p2": "",
+            "w": null
+        },
+        "25": {
+            "p1": "",
+            "p2": "",
+            "w": null
+        },
+        "26": {
+            "p1": "",
+            "p2": "",
+            "w": null
+        },
+        "27": {
+            "p1": "",
+            "p2": "",
+            "w": null
+        },
+        "28": {
+            "p1": "",
+            "p2": "",
+            "w": null
+        },
+        "30": {
+            "p1": "",
+            "p2": "",
+            "w": null
+        }
+    },
+    "reset": false,
+    "shownChamp": null,
+    "title": "⚓ 3rd Panermilio Battleship Tournament",
+    "theme": "arctic"
+}
