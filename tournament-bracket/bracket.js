@@ -20,7 +20,8 @@
     clearTimeout(serverTimer);
     serverTimer = setTimeout(() => {
       const title = document.getElementById('tournament-title').textContent;
-      const body = JSON.stringify({...S, title});
+      const theme = document.body.getAttribute('data-theme') || 'crimson';
+      const body = JSON.stringify({...S, title, theme});
       fetch('/api/state', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
@@ -46,7 +47,8 @@
         document.getElementById('tournament-title').textContent = data.title;
         document.title = data.title;
       }
-      delete data.title;
+      if (data.theme) applyTheme(data.theme);
+      delete data.title; delete data.theme;
       S = data;
       return true;
     } catch(e) { return false; }
@@ -108,7 +110,7 @@
       if(id===31&&!S.reset)continue;
       ct.appendChild(mkMatch(id));
     }
-    drawLines();sizeContainer(ct);updateStandings();
+    drawLines();sizeContainer(ct);updateStandings();updateNextMatch();
   }
 
   function mkMatch(id){
@@ -253,6 +255,53 @@
   }
   function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 
+  /* === NEXT MATCH INDICATOR === */
+  const ROUND_NAMES={1:'Skirmish',2:'Engage',3:'Assault',4:'Flagship',5:'Semis'};
+  const SECTION_NAMES={wb:'Fleet',lb:'Reserve',gf:'Finals'};
+  function updateNextMatch(){
+    const bar=document.getElementById('next-match-list');
+    if(!bar)return;
+    const ready=[];
+    for(const[sid,c]of Object.entries(W)){
+      const id=Number(sid);
+      if(id===31&&!S.reset)continue;
+      const ms=S.m[id];
+      if(!ms)continue;
+      if(ms.p1&&ms.p1.trim()&&ms.p2&&ms.p2.trim()&&ms.w===null){
+        ready.push({id,s:c.s,r:c.r,p1:ms.p1,p2:ms.p2});
+      }
+    }
+    if(ready.length===0){
+      const allDone=S.m[30]&&S.m[30].w!==null&&(!S.reset||(S.m[31]&&S.m[31].w!==null));
+      bar.innerHTML=allDone?'<span class="nmb-done">\u2693 Tournament Complete!</span>':'<span class="nmb-vs">Waiting for match results...</span>';
+      return;
+    }
+    bar.innerHTML=ready.map(m=>{
+      const sec=SECTION_NAMES[m.s]||m.s;
+      const rnd=ROUND_NAMES[m.r]||'R'+m.r;
+      return '<span class="nmb-item '+m.s+'" data-mid="'+m.id+'">'+
+        '<span class="nmb-mid">M'+m.id+'</span> '+
+        esc(m.p1)+' <span class="nmb-vs">vs</span> '+esc(m.p2)+
+        '</span>';
+    }).join('');
+    bar.querySelectorAll('.nmb-item').forEach(el=>{
+      el.addEventListener('click',()=>{
+        const mid=el.getAttribute('data-mid');
+        const matchEl=document.getElementById('match-'+mid);
+        if(matchEl)matchEl.scrollIntoView({behavior:'smooth',block:'center',inline:'center'});
+      });
+    });
+  }
+
+  /* === THEME PICKER === */
+  function applyTheme(name){
+    if(!name||name==='crimson')document.body.removeAttribute('data-theme');
+    else document.body.setAttribute('data-theme',name);
+    document.querySelectorAll('.theme-swatch').forEach(b=>{
+      b.classList.toggle('active',b.getAttribute('data-theme')===name);
+    });
+  }
+
   /* === SHARE (just copies viewer URL) === */
   function shareViewerLink(){
     const base = window.location.origin + window.location.pathname;
@@ -305,6 +354,29 @@
     document.getElementById('reset-btn').addEventListener('click',resetAll);
     document.getElementById('champion-close').addEventListener('click',()=>document.getElementById('champion-overlay').classList.remove('visible'));
     document.getElementById('share-btn').addEventListener('click',shareViewerLink);
+
+    // Theme picker
+    const themeBtn=document.getElementById('theme-btn');
+    const themePanel=document.getElementById('theme-panel');
+    if(themeBtn&&themePanel){
+      themeBtn.addEventListener('click',(e)=>{
+        e.stopPropagation();
+        themePanel.classList.toggle('visible');
+      });
+      document.addEventListener('click',(e)=>{
+        if(!themePanel.contains(e.target))themePanel.classList.remove('visible');
+      });
+      themePanel.querySelectorAll('.theme-swatch').forEach(btn=>{
+        btn.addEventListener('click',()=>{
+          const name=btn.getAttribute('data-theme');
+          applyTheme(name);saveToServer();
+          themePanel.classList.remove('visible');
+        });
+      });
+      // Apply saved theme
+      const savedTheme=document.body.getAttribute('data-theme')||'crimson';
+      applyTheme(savedTheme);
+    }
 
     if(MODE==='admin'){
       document.getElementById('tournament-title').addEventListener('blur',()=>saveToServer());

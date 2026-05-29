@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="theme-color" content="#060e1a">
+  <meta name="theme-color" id="meta-theme" content="#030000">
   <title>3rd Panermilio Battleship Tournament</title>
   <meta name="description" content="Interactive 16-player double elimination battleship tournament bracket">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,6 +23,10 @@
         <span class="mode-badge admin" id="badge-admin">⚙ Admin</span>
         <span class="mode-badge viewer" id="badge-viewer">📡 Viewing</span>
         <span id="sync-dot" class="sync-dot" title="Sync status"></span>
+        <button id="theme-btn" class="btn btn-theme admin-only" title="Color scheme">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          Theme
+        </button>
         <button id="share-btn" class="btn btn-share" title="Share bracket with viewers">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
           Share
@@ -32,8 +36,33 @@
           Reset
         </button>
       </div>
+      <div id="theme-panel" class="theme-panel">
+        <div class="theme-panel-title">Color Scheme</div>
+        <div class="theme-options">
+          <button class="theme-swatch" data-theme="crimson" title="Crimson Night">
+            <span class="swatch-color" style="background:linear-gradient(135deg,#0a0000,#c41e3a,#ffd700)"></span>
+            <span class="swatch-label">Crimson Night</span>
+          </button>
+          <button class="theme-swatch" data-theme="navy" title="Ocean Command">
+            <span class="swatch-color" style="background:linear-gradient(135deg,#060e1a,#1a6baa,#d4a843)"></span>
+            <span class="swatch-label">Ocean Command</span>
+          </button>
+          <button class="theme-swatch" data-theme="emerald" title="Emerald Fleet">
+            <span class="swatch-color" style="background:linear-gradient(135deg,#040a04,#1a8a4a,#ffd700)"></span>
+            <span class="swatch-label">Emerald Fleet</span>
+          </button>
+          <button class="theme-swatch" data-theme="obsidian" title="Obsidian Gold">
+            <span class="swatch-color" style="background:linear-gradient(135deg,#000000,#333333,#d4a843)"></span>
+            <span class="swatch-label">Obsidian Gold</span>
+          </button>
+        </div>
+      </div>
     </div>
   </header>
+  <div id="next-match-bar" class="next-match-bar admin-only">
+    <span class="nmb-label">▶ UP NEXT</span>
+    <div id="next-match-list" class="nmb-list"></div>
+  </div>
   <main>
     <div class="bracket-scroll" id="bracket-scroll">
       <div class="bracket-container" id="bracket-container">
