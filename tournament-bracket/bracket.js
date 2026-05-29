@@ -302,19 +302,7 @@
     });
   }
 
-  /* === SHARE (just copies viewer URL) === */
-  function shareViewerLink(){
-    const base = window.location.origin + window.location.pathname;
-    const url = base; // viewer URL = base URL without ?admin
-    if(navigator.share){
-      navigator.share({title:document.getElementById('tournament-title').textContent, url}).catch(()=>{});
-    } else {
-      const modal=document.getElementById('share-modal');
-      document.getElementById('share-url').value=url;
-      modal.classList.add('visible');
-      setTimeout(()=>{document.getElementById('share-url').focus();document.getElementById('share-url').select()},100);
-    }
-  }
+
 
   function toast(msg){
     const el=document.getElementById('toast');el.textContent=msg;el.classList.add('visible');
@@ -353,7 +341,6 @@
 
     document.getElementById('reset-btn').addEventListener('click',resetAll);
     document.getElementById('champion-close').addEventListener('click',()=>document.getElementById('champion-overlay').classList.remove('visible'));
-    document.getElementById('share-btn').addEventListener('click',shareViewerLink);
 
     // Theme picker
     const themeBtn=document.getElementById('theme-btn');

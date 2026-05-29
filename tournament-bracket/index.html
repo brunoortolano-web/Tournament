@@ -10,7 +10,7 @@
   <meta name="description" content="Interactive 16-player double elimination battleship tournament bracket">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -20,16 +20,12 @@
         <h1 id="tournament-title" contenteditable="true" spellcheck="false">⚓ 3rd Panermilio Battleship Tournament</h1>
       </div>
       <div class="header-right">
-        <span class="mode-badge admin" id="badge-admin">⚙ Admin</span>
-        <span class="mode-badge viewer" id="badge-viewer">📡 Viewing</span>
+        <span class="mode-badge admin" id="badge-admin">⚙ ADMIN</span>
+        <span class="mode-badge viewer" id="badge-viewer">📡 LIVE</span>
         <span id="sync-dot" class="sync-dot" title="Sync status"></span>
         <button id="theme-btn" class="btn btn-theme admin-only" title="Color scheme">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
           Theme
-        </button>
-        <button id="share-btn" class="btn btn-share" title="Share bracket with viewers">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
-          Share
         </button>
         <button id="reset-btn" class="btn btn-danger admin-only" title="Reset tournament">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
@@ -40,26 +36,42 @@
         <div class="theme-panel-title">Color Scheme</div>
         <div class="theme-options">
           <button class="theme-swatch" data-theme="crimson" title="Crimson Night">
-            <span class="swatch-color" style="background:linear-gradient(135deg,#0a0000,#c41e3a,#ffd700)"></span>
+            <span class="swatch-color" style="background:linear-gradient(135deg,#050000,#e63946,#ffd700)"></span>
             <span class="swatch-label">Crimson Night</span>
           </button>
           <button class="theme-swatch" data-theme="navy" title="Ocean Command">
-            <span class="swatch-color" style="background:linear-gradient(135deg,#060e1a,#1a6baa,#d4a843)"></span>
+            <span class="swatch-color" style="background:linear-gradient(135deg,#030a18,#3b82f6,#ffd700)"></span>
             <span class="swatch-label">Ocean Command</span>
           </button>
           <button class="theme-swatch" data-theme="emerald" title="Emerald Fleet">
-            <span class="swatch-color" style="background:linear-gradient(135deg,#040a04,#1a8a4a,#ffd700)"></span>
+            <span class="swatch-color" style="background:linear-gradient(135deg,#020a04,#22c55e,#ffd700)"></span>
             <span class="swatch-label">Emerald Fleet</span>
           </button>
           <button class="theme-swatch" data-theme="obsidian" title="Obsidian Gold">
-            <span class="swatch-color" style="background:linear-gradient(135deg,#000000,#333333,#d4a843)"></span>
+            <span class="swatch-color" style="background:linear-gradient(135deg,#000000,#555,#d4a843)"></span>
             <span class="swatch-label">Obsidian Gold</span>
+          </button>
+          <button class="theme-swatch" data-theme="royal" title="Royal Purple">
+            <span class="swatch-color" style="background:linear-gradient(135deg,#08030f,#8b5cf6,#ffd700)"></span>
+            <span class="swatch-label">Royal Purple</span>
+          </button>
+          <button class="theme-swatch" data-theme="arctic" title="Arctic Frost">
+            <span class="swatch-color" style="background:linear-gradient(135deg,#040810,#06b6d4,#e0e8f0)"></span>
+            <span class="swatch-label">Arctic Frost</span>
+          </button>
+          <button class="theme-swatch" data-theme="inferno" title="Inferno">
+            <span class="swatch-color" style="background:linear-gradient(135deg,#080200,#f97316,#ffd700)"></span>
+            <span class="swatch-label">Inferno</span>
+          </button>
+          <button class="theme-swatch" data-theme="rose" title="Midnight Rose">
+            <span class="swatch-color" style="background:linear-gradient(135deg,#0a0208,#ec4899,#ffd700)"></span>
+            <span class="swatch-label">Midnight Rose</span>
           </button>
         </div>
       </div>
     </div>
   </header>
-  <div id="next-match-bar" class="next-match-bar admin-only">
+  <div id="next-match-bar" class="next-match-bar">
     <span class="nmb-label">▶ UP NEXT</span>
     <div id="next-match-list" class="nmb-list"></div>
   </div>
@@ -77,17 +89,6 @@
       <div class="champion-label">ADMIRAL</div>
       <div class="champion-name" id="champion-name"></div>
       <button class="champion-close" id="champion-close">Dismissed</button>
-    </div>
-  </div>
-  <div id="share-modal" class="share-modal">
-    <div class="share-modal-card">
-      <div class="share-modal-title">📡 Share this link with viewers</div>
-      <p class="share-modal-hint">Select all → Copy → Send via WhatsApp/chat</p>
-      <textarea id="share-url" class="share-url" readonly rows="3"></textarea>
-      <div class="share-modal-btns">
-        <button id="share-copy-btn" class="btn btn-share" onclick="document.getElementById('share-url').select();try{document.execCommand('copy')}catch(e){};this.textContent='Copied!'">Copy</button>
-        <button class="btn btn-danger" onclick="document.getElementById('share-modal').classList.remove('visible')">Close</button>
-      </div>
     </div>
   </div>
   <div id="toast" class="toast"></div>
